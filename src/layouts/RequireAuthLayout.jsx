@@ -3,7 +3,6 @@ import { UserContext } from "../context/UserProvider"
 import { Navigate, Outlet} from "react-router-dom"
 import NavBar from "../containers/NavBar";
 
-
 const RequireAuthLayout = () => {
   
   const {user} = useContext(UserContext);
@@ -14,7 +13,7 @@ const RequireAuthLayout = () => {
 
   return (
     <>
-    <div className="bg-[url('./src/assets/images/DCbackground.png')] bg-cover h-screen w-full overflow-scroll">
+    <div className="bg-[url('../../dist/assets/images/DCbackground.png')] bg-cover h-screen w-full overflow-scroll">
       <NavBar />
       
       <div className="bg-black/40 py-1">

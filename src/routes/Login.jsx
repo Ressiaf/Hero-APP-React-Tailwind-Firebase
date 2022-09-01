@@ -22,10 +22,10 @@ const Login = () => {
         formState: { errors },
         setError,
     } = useForm({
-        defaultValues: {
-        email: "funcional.register@test.com",
-        password: "123123",
-        },
+        // defaultValues: {
+        // email: "funcional.register@test.com",
+        // password: "123123",
+        // },
     });
 
     const onSubmit = async ({ email, password }) => {

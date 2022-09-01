@@ -8,8 +8,8 @@ module.exports = withMT({
   theme: {
     extend: {
       backgroundImage: {
-        'venom-pattern': "url('./src/assets/images/Venombackground.png')",
-        'dc-pattern': "url('./src/assets/images/DCbackground.png')"
+        'venom-pattern': "url('./dist/assets/images/Venombackground.png')",
+        'dc-pattern': "url('./dist/assets/images/DCbackground.png')"
       }
     },
   },
