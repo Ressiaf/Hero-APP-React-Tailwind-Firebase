@@ -8,7 +8,7 @@ module.exports = withMT({
   theme: {
     extend: {
       backgroundImage: {
-        'venom-pattern': "url('./dist/assets/images/Venombackground.png')",
+        'venom-pattern': "url('https://raw.githubusercontent.com/Ressiaf/wiki-geeks/655ab32f34aa07bce8009762c30e1014d24e47d3/dist/assets/images/Venombackground.png')",
         'dc-pattern': "url('./dist/assets/images/DCbackground.png')"
       }
     },
