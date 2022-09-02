@@ -14,7 +14,7 @@ const RequireAuthLayout = () => {
 
   return (
     <>
-    <div className="bg-[url('../../dist/assets/images/DCbackground.png')] bg-cover h-screen w-full overflow-scroll">
+    <div className="image-[url('../../dist/assets/images/DCbackground.png')] bg-cover h-screen w-full overflow-scroll">
       <NavBar />
       
       <div className="bg-black/40 py-1">
