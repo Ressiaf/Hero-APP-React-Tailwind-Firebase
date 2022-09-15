@@ -1,19 +1,22 @@
-import React, { useContext ,useEffect  } from 'react'
+import React, { useContext ,useEffect ,useState } from 'react'
 import { useParams , useNavigate }  from 'react-router-dom'
 import HeroContext from '../context/Hero/HeroContext';
-import Title from '../components/Title';
 import Text from '../components/Text';
 import ProgressBar from '../components/ProgressBar';
 import { nanoid } from 'nanoid';
-import {IoArrowBack} from 'react-icons/io5'
 import Spinner from '../components/Spinner';
-
+import FormButton from '../components/Buttons/FormButton'
+import {MdFavorite, MdIosShare, MdOutlineArrowBack} from 'react-icons/md'
+import RedAlert  from '../components/RedAlert'
 export const HeroPage = ( ) => {
 
     const { heroID } = useParams( );
-    const { heroByID , getHeroByID } = useContext(HeroContext)
 
+    const { heroByID , getHeroByID } = useContext(HeroContext)
     
+    const [copy , setCopy] = useState(false)
+    const [liked, setLiked] = useState(false)
+
     useEffect( ( ) => {
         getHeroByID(heroID)
     }, [ ] )
@@ -35,49 +38,57 @@ export const HeroPage = ( ) => {
         {value: "aliases", description: heroByID.aliases} ,
         {value: "born in", description: heroByID.birth} ,
         {value: "alignament", description: heroByID.alignament} ,
-        {value: "works", description: heroByID.works} ,
+        {value: "weight", description: heroByID.heroW} ,
+        {value: "height", description:heroByID.heroH}  ,
     ];
-    
+
     const navigate = useNavigate()
 
     const onNavigateBack = () => {
         navigate(-1)
     }
 
-    if (heroByID.length === 0) return < Spinner / >
+    const handleClickCopy = async () => {
+        await navigator.clipboard.writeText(window.location.href );
+        setCopy(true);
+    } 
+
+    const handleClickLiked = () => {
+        setLiked(true);
+    }
+
+    if (heroByID.length === 0) return <Spinner / >
 
     return (
-        <div className='h-screen w-full pt-8 px-4 rounded overflow-scroll items-center  lg:overflow-hidden bg-black/40' >
-        <button
-            className=' md:static rounded-full p-1 border-2 border-white/80  mx-10 my-8 fixed -left-9 bg-black/60'
-            onClick={onNavigateBack}
-        >
-            <IoArrowBack className='  text-white/80 text-4xl  hover:text-white' />
-        </button>
-            <Title text={heroByID.name} />
-
+        <div className='h-screen'>
+        {copy ? ( <RedAlert text="The url was copied to clipboard  🚀" /> ) : (" ")  }
+        {liked ? ( <RedAlert text="The super hero was added to favorites 🤍 " /> ) : (" ")  }
+        <div className=' h-3/4 mb-20 mt-16 w-full pt-8 px-4  overflow-scroll items-center  lg:overflow-hidden bg-gray-200/80 rounded-md shadow-2xl shadow-black  border-4  -border-spacing-2 border-black/80  animate__animated animate__zoomIn' >
             <div className='grid  lg:grid-cols-3  xs:grid-cols-1 lg:justify-items-stretch justify-items-center m-8  ' >
-                <div className='mt-8'>
+                <div className='m-4'>
+
                     <img
                         src={heroByID.imgLg}
                         alt={heroByID.name}
-                        className="object-cover bg-cover md:h-auto md:w-96  w-80  rounded-md shadow-2xl shadow-black mb-8"
+                        className="object-cover bg-cover md:h-auto md:w-96  w-80  rounded-md shadow-2xl shadow-black mb-8 border-2 border-spacing-2 border-black/80 "
                     />
                 </div>
-                <div className='md:px-8  px-2 mt-12 '> 
-                    <Text text="publisher" span={heroByID.publisher} />
+                <div className='md:px-8  px-6 mt-12   '> 
+                    <h3 className='text-2xl sm:text-5xl uppercase inline font-medium tracking-widest text-center antialiased mb-8'>{heroByID.name}</h3>
+                {/* <Title text={heroByID.name} color="black"  /> */}
+                    <Text text="publisher" span={heroByID.publisher} color="black"  />
                     <div className='pb-2'>
-                        <Text text="stats" />
+                        <Text text="stats" color="black"  />
                             {stats.map((item) => (
                                 <ProgressBar
-                                    key={nanoid()} 
-                                    progress={item.progress}
-                                    label={item.label}
+                                key={nanoid()} 
+                                progress={item.progress}
+                                label={item.label}
                                 />
-                            ))}
+                                ))}
                     </div>
-                    <Text text="weight" span={heroByID.heroW} />
-                    <Text text="height" span={heroByID.heroH} />
+                
+
                 </div>
                 <div className='lg:pl-8  mt-2  lg:mt-12  ml-5 max-w-sm '>
                     {biography.map((item) => (
@@ -85,13 +96,34 @@ export const HeroPage = ( ) => {
                             key={nanoid()} 
                             text={item.value}
                             span={item.description}
+                            color="black"
                         />
                     ))}
+                <div className=' my-8 '>
+                    <FormButton 
+                        text="Back " 
+                        icon={<MdOutlineArrowBack 
+                        className="inline ml-2  scale-110"/>} 
+                        onClick={onNavigateBack}
+                    />
+                    <FormButton 
+                        text="Share "  
+                        icon={<MdIosShare 
+                        className="inline ml-2  scale-110"/>}
+                        onClick={handleClickCopy}
+                    />
+                    <FormButton 
+                    icon={<MdFavorite 
+                    className="inline scale-110"/>}
+                    onClick={handleClickLiked}
+                    />
+
+                </div>
                 </div>
 
             </div>
         </div>
-
+        </div>
         )
         
 }

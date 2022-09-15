@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import FormAlert from "../components/Forms/FormAlert";
 import FormInput from "../components/Forms/FormInputs";
 import FormButton from "../components/Buttons/FormButton";
+import {FaRegFileAlt} from "react-icons/fa"
 
 const Register = () => {
     const navegate = useNavigate();
@@ -46,7 +47,7 @@ const Register = () => {
 return (
     <>
         <div className="p-6  mt-32 h-screen rounded-md z-20  bg-black bg-opacity-70 border-2 border-white/50">
-            <p className="text-white text-4xl underline underline-offset-4 decoration-red-600 decoration-2"> Register</p>
+            <p className="text-white text-4xl"> Register</p>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <FormInput
                     type="email"
@@ -91,6 +92,7 @@ return (
                         text="Register" 
                         type="submit" 
                         loading={loading} 
+                        icon={<FaRegFileAlt className="inline ml-2"/>}
                     />
                     <div className="ml-4">
                         <h6>Already a member? </h6>

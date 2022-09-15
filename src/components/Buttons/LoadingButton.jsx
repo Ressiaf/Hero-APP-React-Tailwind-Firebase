@@ -1,22 +1,18 @@
-const LoadingButton = () => {
+const LoadingButton = ({color =  "red"}) => {
+
+    const Buttonclass = "relative group items-center justify-center px-6 py-1.5 mr-4 cursor-pointer text-white font-medium rounded text-sm text-center  inline-flex items-center ";
+
+    let Buttoncolor;
+        if (color === "red") {
+            Buttoncolor = "bg-red-600/95 text-white hover:bg-red-600/90 overflow-hidden shadow-sm shadow-black/60 border border-spacing-2 border-black/80  ";
+        }
+
+
     return (
         <button
         disabled=""
         type="button"
-        className="
-            text-white
-            bg-red-600/80
-            focus:ring-4 
-            focus:outline-none 
-            font-medium 
-            rounded
-            text-sm 
-            px-5 
-            py-2
-            text-center 
-            my-4
-            inline-flex 
-            items-center"
+        className={ Buttonclass + Buttoncolor }
         >
         <svg
             role="status"

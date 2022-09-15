@@ -4,6 +4,7 @@ import HeroContext from '../../../context/Hero/HeroContext'
 import { useCounter } from '../../../hooks/useCounter'
 import { Pagination } from '../../Pagination'
 import { HeroCard } from './HeroCard'
+import Spinner from '../../Spinner'
 
 export const HeroList = ( { publisher  } ) => {
 
@@ -20,7 +21,10 @@ export const HeroList = ( { publisher  } ) => {
         } else if (counter <= max) {
             setShow(true)
         }
+        
     }, [  publisher ,counter ] )
+
+    if (heroesByPublisher.length === 0) return <Spinner / >
     
     const heroesPagination =  heroesByPublisher.slice( (counter - 1) * heroPerPage , (counter - 1) * heroPerPage + heroPerPage )
 

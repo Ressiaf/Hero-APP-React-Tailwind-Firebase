@@ -1,13 +1,14 @@
 import LoadingButton from "./LoadingButton";
 
-const FormButton = ({ text, type, color =  "red" , loading, onClick }) => {    
+
+const FormButton = ({ text, type, color =  "red" , loading, onClick ,icon }) => {    
     if (loading) return <LoadingButton  />;
 
-    const Buttonclass = `focus:outline-none text-white focus:ring-6 font-medium rounded text-sm px-5  text-center my-4 inline-flex items-center `;
+    const Buttonclass = " relative inline-flex group items-center justify-center px-6 py-1.5 mr-4 cursor-pointer text-white font-medium rounded text-sm text-center  inline-flex items-center ";
 
     let Buttoncolor;
         if (color === "red") {
-            Buttoncolor = "bg-red-600/80 text-white  px-12 hover:bg-red-600/90  py-2";
+            Buttoncolor = "bg-red-600/95 text-white hover:bg-red-600/90  overflow-hidden shadow-sm shadow-black/60 border border-spacing-2 border-black/80  ";
         }
 
 
@@ -17,9 +18,14 @@ const FormButton = ({ text, type, color =  "red" , loading, onClick }) => {
             type={ type }
             className={ Buttonclass + Buttoncolor }
         >
-            { text }
+            <span className="absolute w-0 h-0 transition-all duration-700 ease-out bg-white rounded-full group-hover:w-48 group-hover:h-48 opacity-10"></span>
+            <span className="relative">
+                { text }
+                {icon}
+            </span>
         </button>
     );
 };
 
 export default FormButton;
+

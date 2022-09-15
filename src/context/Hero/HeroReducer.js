@@ -1,6 +1,4 @@
 export const HeroReducer = (state = {}, action) => {
- console.log("action:", action);
- console.log("state:",state);
     switch (action.type ) {
         case 'GET_BY_ID':
             return {

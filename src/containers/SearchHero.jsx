@@ -7,12 +7,14 @@ import HeroContext from "../context/Hero/HeroContext";
 import Title from "../components/Title";
 import FormInput from "../components/Forms/FormInputs";
 import FormButton from "../components/Buttons/FormButton";
-
+import Text from "../components/Text";
+import {BiLike} from "react-icons/bi"
 
 
 const SearchPage = () => {
 
     const navigate = useNavigate();
+
     const location = useLocation();
 
     const { q = 'batman' } = queryString.parse(location.search);
@@ -21,15 +23,14 @@ const SearchPage = () => {
 
     const hero = useMemo( () =>  handleName(q), [q])
 
-
     const { searchText, onInputChange } = useForm({ searchText: q })
 
     const onSearchSubmit = (e) => {
         e.preventDefault();
         if (searchText.trim().length<= 1) return;
-        console.log(searchText)
         navigate(`?q=${searchText}`);
     }
+
 
     return (
         <>
@@ -37,10 +38,10 @@ const SearchPage = () => {
             <Title text="search" />
             <div className="m-8">
                 <form onSubmit={onSearchSubmit}>
+                    <Text text="Search heros by name:" />
                     <FormInput
                         type="text"
                         placeholder=" Example: Batman"
-                        label="Search hero by name:" 
                         name="searchText"
                         autoComplete="off"
                         value={searchText}
@@ -49,6 +50,7 @@ const SearchPage = () => {
                     <FormButton
                         text="I'm gonna get lucky"
                         type="submit"
+                        icon=" 🔥" 
                     />
                 </form>
             </div>

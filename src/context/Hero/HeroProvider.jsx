@@ -38,7 +38,7 @@ const handleName = ( name ) => {
 const handleAllPublishers = () => {
     return getPublishers(heroes)
 }
-// console.log(getPublishers(heroes));
+
 
 return (
     <HeroContext.Provider value={{

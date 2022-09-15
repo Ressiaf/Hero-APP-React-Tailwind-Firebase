@@ -28,7 +28,6 @@ const FormInput = forwardRef(
                     onChange={onChange}
                     onBlur={onBlur}
                     name={name}
-
                 />
                 {children}
             </div>

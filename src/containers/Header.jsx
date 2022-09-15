@@ -3,11 +3,12 @@ import { NavLink, useNavigate, Link } from "react-router-dom";
 import { UserContext } from "../context/UserProvider";
 import {MdLogin , MdLogout} from "react-icons/md";
 import {AiOutlineForm} from "react-icons/ai"
-
+import FormButton from "../components/Buttons/FormButton";
 
 const Header = () => {
     const { user, singOutUser } = useContext(UserContext);
-    const navegate = useNavigate();
+
+    const navegate = useNavigate( );
 
     const handleLogout = async () => {
         try {
@@ -18,7 +19,8 @@ const Header = () => {
         }
     };
 
-    const Style = "text-gray-50 hover:text-white/75 font-sans  text-xl px-5 py-1 mt-2 text-center mr-0.5 mb-2"
+    // STYLES
+    const Style = ""
     
     return (
         <nav className="sticky top-0 z-40  bg-black border-b  px-2 sm:px-4 py-2.5 ">
@@ -33,29 +35,21 @@ const Header = () => {
                 </Link>
                 <div className="flex flex-col sm:flex-row  justify-center  md:order-2">
                     {
-                        user ? (<p className={Style + "mr-4 text-red-600 pointer-events-none  font-thin"}>{ user.email }</p>) : ( " " ) 
+                        user ? (<p className=" font-sans text-xl px-5 py-1 mt-2 text-center  mr-4 mb-2 text-red-600 pointer-events-none font-thin">{ user.email }</p>) : ( " " ) 
                     }
                     {user ? (
                         <>
                             <div className="flex items-center gap-2">
-                                <button onClick={handleLogout} className={Style }>Logout
-                                    <MdLogout className="inline ml-2 mb-1"/>
-                                </button>
+                            <FormButton onClick={handleLogout} text="Logout" icon={<MdLogout className="inline ml-2  scale-110"/>}/>
                             </div>
                         </>
                     ) : (
                         <>  
                             <NavLink to="/login" className={Style }>
-                                <div className="flex items-center gap-2">
-                                    <MdLogin className="inline ml-2  "/>
-                                    <p>Login </p>
-                                </div>
+                                <FormButton text="Login" icon={<MdLogin className="inline ml-2  scale-110"/>}/>
                             </NavLink>
                             <NavLink to="/register" className={Style }>
-                                <div className="flex items-center gap-2">
-                                    <AiOutlineForm className="inline ml-2  "/>
-                                    <p>Register </p>
-                                </div>
+                                <FormButton text="Register" icon={<AiOutlineForm className="inline ml-2  scale-110"/>}/>
                             </NavLink>
                         </>
                     )}
