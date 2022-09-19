@@ -58,12 +58,13 @@ export const HeroPage = ( ) => {
     }
 
     if (heroByID.length === 0) return <Spinner / >
-
+https://i.snipboard.io/3COv5A.jpg
     return (
-        <div className='h-screen'>
+        <div className='h-screen relative overflow-scroll  animate__animated animate__zoomIn'>
         {copy ? ( <RedAlert text="The url was copied to clipboard  🚀" /> ) : (" ")  }
         {liked ? ( <RedAlert text="The super hero was added to favorites 🤍 " /> ) : (" ")  }
-        <div className=' h-3/4 mb-20 mt-16 w-full pt-8 px-4  overflow-scroll items-center  lg:overflow-hidden bg-gray-200/80 rounded-md shadow-2xl shadow-black  border-4  -border-spacing-2 border-black/80  animate__animated animate__zoomIn' >
+        <div className="bg-[image:url('https://i.snipboard.io/3COv5A.jpg')] h-3/4 w-full mb-20  mt-16 rounded-md opacity-60  absolute">  </div>
+        <div className=" absolute h-3/4 mb-20 mt-16 w-full pt-8 px-4  rounded-md overflow-scroll items-center  lg:overflow-hidden bg-gray-200/90 shadow-2xl shadow-black  border-2 -border-spacing-2 border-black/80 " >
             <div className='grid  lg:grid-cols-3  xs:grid-cols-1 lg:justify-items-stretch justify-items-center m-8  ' >
                 <div className='m-4'>
 

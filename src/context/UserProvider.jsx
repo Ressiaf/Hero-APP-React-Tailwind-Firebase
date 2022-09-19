@@ -7,7 +7,7 @@ import {
     signOut,
 } from "firebase/auth";
 import { createContext, useState , useEffect} from "react";
-import { auth } from "../firebase";
+import { auth } from "../firebase/firebase.js";
 
 export const UserContext = createContext( );
 
@@ -35,7 +35,7 @@ const UserProvider = ( { children } ) => {
         signInWithEmailAndPassword( auth, email, password );
 
     const loginUserWhitGoogle = ( ) =>
-        signInWithPopup( auth, googleProvider);
+        signInWithPopup( auth, googleProvider );
 
     const singOutUser = () => signOut(auth);
 

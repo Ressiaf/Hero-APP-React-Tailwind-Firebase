@@ -15,7 +15,7 @@ export const HeroCard = ({ ...hero }) => {
     <>
         <Link
             to={`/hero/${hero.id}`}
-            className="flex bg-gray-200/80 rounded-md w-80 md:w-auto  border md:max-w-sm  sm:max-w-md sm:w-11/12 m-8 hover:bg-gray-50/90 overflow-hidden shadow-xl shadow-black animate__animated animate__fadeInUp"
+            className="flex bg-gray-200/90 rounded-md w-80 md:w-auto  border md:max-w-sm  sm:max-w-md sm:w-11/12 m-8 hover:bg-gray-50 overflow-hidden shadow-xl shadow-black animate__animated animate__fadeInUp"
         >
             <img
             src={hero.imgLg}
